@@ -1,23 +1,11 @@
-const axios = require('axios');
+const express = require('express');
+const app = express();
+const port = 3000;
 
-// Function to retrieve data from the API
-async function fetchData() {
-  try {
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    return null;
-  }
-}
+app.get('/', (req, res) => {
+  res.send('Hello from Team Orion!');
+});
 
-// Function to display the fetched data in the console
-async function displayData() {
-  const data = await fetchData();
-  if (data) {
-    console.log('Fetched data:', data);
-  }
-}
-
-// Invoke the displayData function
-displayData();
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
